@@ -27,6 +27,10 @@ jar {
     }
 }
 
+bootJar {
+    archiveFileName = 'temporence-cms.jar' // 원하는 파일 이름으로 변경
+}
+
 repositories {
     mavenCentral()
 }
