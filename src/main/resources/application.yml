@@ -1,0 +1,49 @@
+spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  profiles:
+    active: local
+  config:
+    name: application
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      use-new-id-generator-mappings: false
+    properties:
+      hibernate:
+        format_sql: true
+  jackson:
+    time-zone=Asia/Seoul:
+
+springdoc:
+  paths-to-exclude: /swagger-resources/**, /v3/**, /v2/**
+  swagger-ui:
+    operationsSorter: method
+  api-docs:
+    path: /v3/api-docs/swagger-config
+
+jwt:
+  header: Authorization
+  secret: RG9uZ3lhbmcgTWlyYWUgVW51dmVyY2lyeSBNYXJzIFNlcXVlcmUgQ2x1YiA0dGggVG9kbyBQcm9qZWN0IEZyb250IGlzIFJlYWN0IGFuZCBTZXJ2ZXIgaXMgU3ByaW5n
+  token-validity-in-seconds: 86400
+
+logging:
+  file:
+    path: ./log
+    name: ./log/log-temporence-api.txt
+    org:
+      springframework:
+        web: INFO
+        security: DEBUG
+  level:
+    mars.ourmindmaze: debug
+
+skip:
+  resources: /api/auth/**,/h2-console/**,/v3/api-docs,/v3/api-docs/**,/swagger-ui/**,/v2/api-docs/**,/swagger-ui/index.html
+
+server:
+  port: 8080
